@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/master :: head">
+<meta charset="UTF-8">
+</head>
+<body>
+	<header th:replace="master/master :: header"></header>
+	<div class="container">
+		<hr style="background-color: #fdfdfd" />
+		<div
+			style="font-family: 'Roboto Condensed', sans-serif; font-size: 150%;">Registro
+			de servicio</div>
+		<hr style="background-color: #FA251B" />
+
+
+		<div>
+			<form th:action="@{/service/actualizar}" th:object="${se}" method="post">
+				<div class="col-sm-12">
+					<label class="form-label">Id: </label> <input type="text"
+						th:field="*{idService}" class="form-control"></input>
+				</div>
+
+				<div class="col-sm-12">
+					<label class="form-label">Tipo de Desecho: </label> <input
+						type="text" th:field="*{typewaste}" class="form-control"></input>
+				</div>
+
+				<div class="col-sm-12">
+					<label class="form-label">Fecha Servicio: </label> <input
+						type="date" th:field="*{dateService}" class="form-control"></input>
+				</div>
+
+				<div class="col-sm-12">
+					<label class="form-label">Cantidad de Desecho: </label> <input
+						type="text" th:field="*{quantityWaste}" class="form-control"></input>
+				</div>
+
+				<div class="col-sm-12">
+					<label class="form-label">Cantidad de Conductor: </label> <input
+						type="text" th:field="*{quantityDriver}" class="form-control"></input>
+				</div>
+
+				<div class="col-sm-12">
+					<label class="form-label">Camion: </label> <select
+						name="selectCamion" class="form-control"
+						th:field="*{camion.idCamion}">
+						<option th:each="ca: ${listCamion}" th:value="${ca.idCamion}"
+							th:text="${ca.modeloCamion}"
+							th:selected="(${ca.idCamion}==*{camion.idCamion})"></option>
+					</select>
+				</div>
+
+				<div class="col-sm-12">
+					<label class="form-label">Empresa: </label> <select
+						name="selectCompany" class="form-control"
+						th:field="*{empresa.idCompany}">
+						<option th:each="cm: ${listCompany}" th:value="${cm.idCompany}"
+							th:text="${cm.nameCompany}"
+							th:selected="(${cm.idCompany}==*{empresa.idCompany})"></option>
+					</select>
+				</div>
+
+
+				<div class="col-sm-12">
+					<input type="submit" value="Registrar" class="btn btn-dark"></input>
+				</div>
+
+
+			</form>
+		</div>
+
+
+
+	</div>
+</body>
+</html>

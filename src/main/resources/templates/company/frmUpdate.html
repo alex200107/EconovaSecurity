@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/master :: head">
+<meta charset="UTF-8">
+</head>
+<body>
+	<header th:replace="master/master :: header"></header>
+	<div class="container">
+
+		<hr style="background-color: #fdfdfd" />
+		<div
+			style="font-family: 'Roboto Condensed', sans-serif; font-size: 150%;">Registro
+			de empresa</div>
+		<hr style="background-color: #FA251B" />
+
+		<div>
+			<form th:action="@{/company/actualizar}" th:object="${co}" method="post">
+				<div class="col-sm-12">
+					<label class="form-label">Id: </label> <input type="text"
+						th:field="*{idCompany}" class="form-control"></input>
+				</div>
+
+				<div class="col-sm-12">
+					<label class="form-label">Name: </label> <input type="text"
+						th:field="*{nameCompany}" class="form-control"></input>
+				</div>
+
+				<div class="col-sm-12">
+					<label class="form-label">RUC: </label> <input type="text"
+						th:field="*{ruCompany}" class="form-control"></input>
+				</div>
+
+				<div class="col-sm-12">
+					<label class="form-label">Phone: </label> <input type="text"
+						th:field="*{phoneCompany}" class="form-control"></input>
+				</div>
+
+				<div class="col-sm-12">
+					<label class="form-label">Address: </label> <input type="text"
+						th:field="*{addressCompany}" class="form-control"></input>
+				</div>
+
+				<div class="col-sm-12">
+					<label class="form-label">Tipo de Suscripción: </label> <select
+						name="selectTypeSuscription" class="form-control"
+						th:field="*{typesuscription.idTypeSuscription}">
+						<option th:each="ty: ${listtypesuscription}"
+							th:value="${ty.idTypeSuscription}"
+							th:text="${ty.nameSuscription}"
+							th:selected="(${ty.idTypeSuscription}==*{typesuscription.idTypeSuscription})"></option>
+					</select>
+				</div>
+
+
+
+				<div class="col-sm-12">
+					<input type="submit" value="Register" class="btn btn-dark"></input>
+				</div>
+
+
+			</form>
+		</div>
+
+
+
+	</div>
+</body>
+</html>

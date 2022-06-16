@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/master :: head">
+<meta charset="UTF-8">
+</head>
+<body>
+	<header th:replace="master/master :: header"></header>
+	<div class="container">
+		<hr style="background-color: #fdfdfd" />
+		<div
+			style="font-family: 'Roboto Condensed', sans-serif; font-size: 150%;">Registro
+			de Libreta de vacunación</div>
+		<hr style="background-color: #FA251B" />
+
+
+		<div>
+			<form th:action="@{/listvaccination/save}" th:object="${l}"
+				method="post">
+				<div class="col-sm-12">
+					<label class="form-label">Id: </label> <input type="text"
+						th:field="*{idListVaccination}" class="form-control"></input>
+				</div>
+
+				<div class="col-sm-12">
+					<label class="form-label">Fecha de vacunacion: </label> <input
+						type="date" th:field="*{dateVaccination}" class="form-control"></input>
+				</div>
+
+				<div class="col-sm-12">
+					<label class="form-label">Numero de Dosis: </label> <input
+						type="text" th:field="*{numberOfDose}" class="form-control"></input>
+				</div>
+
+				<div class="col-sm-12">
+					<label class="form-label">Id de Vaccine: </label> <select
+						name="selectVaccine" class="form-control"
+						th:field="*{vaccine.idVaccine}">
+						<option th:each="va: ${listVaccine}" th:value="${va.idVaccine}"
+							th:text="${va.descriptionVaccine}"
+							th:selected="(${va.idVaccine}==*{vaccine.idVaccine})"></option>
+					</select>
+				</div>
+
+				<div class="col-sm-12">
+					<label class="form-label">Id de Driver: </label> <select
+						name="selectDriver" class="form-control"
+						th:field="*{driver.idDriver}">
+						<option th:each="dr: ${listDriver}" th:value="${dr.idDriver}"
+							th:text="${dr.nameDriver}"
+							th:selected="(${dr.idDriver}==*{driver.idDriver})"></option>
+					</select>
+				</div>
+
+
+
+
+
+				<div class="col-sm-12">
+					<input type="submit" value="Registrar" class="btn btn-dark"></input>
+				</div>
+
+
+			</form>
+		</div>
+
+
+
+	</div>
+</body>
+</html>

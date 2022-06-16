@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/master :: head">
+<meta charset="UTF-8">
+</head>
+<body>
+	<header th:replace="master/master :: header"></header>
+	<div class="container">
+		<hr style="background-color: #fdfdfd" />
+		<div
+			style="font-family: 'Roboto Condensed', sans-serif; font-size: 150%;">Registro
+			de conductor</div>
+		<hr style="background-color: #FA251B" />
+
+
+		<div>
+			<form th:action="@{/driver/save}" th:object="${d}" method="post">
+				<div class="col-sm-12">
+					<label class="form-label">Id: </label> <input type="text"
+						th:field="*{idDriver}" class="form-control"></input>
+				</div>
+
+				<div class="col-sm-12">
+					<label class="form-label">NameDriver: </label> <input type="text"
+						th:field="*{nameDriver}" class="form-control"></input>
+				</div>
+
+				<div class="col-sm-12">
+					<label class="form-label">LastNameDriver: </label> <input
+						type="text" th:field="*{lastnameDriver}" class="form-control"></input>
+				</div>
+
+				<div class="col-sm-12">
+					<label class="form-label">Anios: </label> <input type="text"
+						th:field="*{anios}" class="form-control"></input>
+				</div>
+
+				<div class="col-sm-12">
+					<input type="submit" value="Registrar" class="btn btn-dark"></input>
+				</div>
+
+
+			</form>
+		</div>
+
+
+
+	</div>
+</body>
+</html>

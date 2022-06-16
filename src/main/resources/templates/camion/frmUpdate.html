@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/master :: head">
+<meta charset="UTF-8">
+</head>
+<body>
+	<header th:replace="master/master :: header"></header>
+	<div class="container">
+		<hr style="background-color: #fdfdfd" />
+		<div
+			style="font-family: 'Roboto Condensed', sans-serif; font-size: 150%;">Registro
+			de camión</div>
+		<hr style="background-color: #FA251B" />
+
+
+		<div>
+			<form th:action="@{/camion/actualizar}" th:object="${ca}" method="post">
+				<div class="col-sm-12">
+					<label class="form-label">Id: </label> <input type="text"
+						th:field="*{idCamion}" class="form-control"></input>
+				</div>
+
+				<div class="col-sm-12">
+					<label class="form-label">Modelo: </label> <input type="text"
+						th:field="*{modeloCamion}" class="form-control"></input>
+				</div>
+
+				<div class="col-sm-12">
+					<label class="form-label">Color: </label> <input type="text"
+						th:field="*{colorCamion}" class="form-control"></input>
+				</div>
+
+				<div class="col-sm-12">
+					<label class="form-label">Placa: </label> <input type="text"
+						th:field="*{placaCamion}" class="form-control"></input>
+				</div>
+
+				<div class="col-sm-12">
+					<label class="form-label">Capacidad: </label> <input type="text"
+						th:field="*{capacidadCamion}" class="form-control"></input>
+				</div>
+
+				<div class="col-sm-12">
+					<label class="form-label">Id de Driver: </label> <select
+						name="selectDriver" class="form-control"
+						th:field="*{driver.idDriver}">
+						<option th:each="dr: ${listDriver}" th:value="${dr.idDriver}"
+							th:text="${dr.nameDriver}"
+							th:selected="(${dr.idDriver}==*{driver.idDriver})"></option>
+					</select>
+				</div>
+
+				<div class="form-group row">
+					<div class="col-sm-6">
+						<input type="submit" value="Actualizar" class="btn btn-dark" /> <a
+							href="/camion/list" class="btn btn-danger"><span>Cancelar</span></a>
+					</div>
+				</div>
+
+
+			</form>
+		</div>
+
+
+
+	</div>
+</body>
+</html>

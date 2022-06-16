@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/master :: head">
+<meta charset="UTF-8">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+<title>TYPESUSCRIPTION</title>
+</head>
+<body>
+
+	<header th:replace="master/master :: header"></header>
+
+
+	<div class="container">
+		<hr style="background-color: #fdfdfd" />
+		<div
+			style="font-family: 'Roboto Condensed', sans-serif; font-size: 150%;">Lista
+			de Tipo suscripción</div>
+		<hr style="background-color: #FA251B" />
+		<form id="myform">
+			<div class="row clearfix">
+				<div class="col-md-12 column">
+
+					<table class="table table-bordered table-hover table-striped"
+						id="tab_logic">
+						<thead>
+							<tr>
+								<th class="text-center">ID</th>
+								<th class="text-center">NAMESUSCRIPTION</th>
+								<th class="text-center">DATESTART</th>
+								<th class="text-center">DATEEND</th>
+								<th class="text-center">OPERATION</th>
+								<th class="text-center">OPERATION</th>
+
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="type: ${listtypesuscription}">
+								<td th:text="${type.idTypeSuscription}"></td>
+								<td th:text="${type.nameSuscription}"></td>
+								<td th:text="${#dates.format(type.datestart,'dd/MM/yyyy')}"></td>
+								<td th:text="${#dates.format(type.dateend,'dd/MM/yyyy')}"></td>
+								<td><a
+									th:href="@{/typesuscription/delete?id=}+${type.idTypeSuscription}">DELETE
+								</a></td>
+
+								<td><a
+									th:href="@{'/typesuscription/modificar/'+${type.idTypeSuscription}}">ACTUALIZAR
+								</a></td>
+
+							</tr>
+						</tbody>
+					</table>
+
+				</div>
+			</div>
+
+
+		</form>
+
+	</div>
+
+</body>
+</html>
