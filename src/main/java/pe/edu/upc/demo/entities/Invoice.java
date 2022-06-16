@@ -12,12 +12,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
 import org.springframework.format.annotation.DateTimeFormat;
-
-@Entity
-@Table(name = "Invoice")
-public class Invoice {
+				      
+	@Entity
+	@Table(name = "Invoice")
+	public class Invoice {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idInvoice;
@@ -78,8 +77,5 @@ public class Invoice {
 	public void setService(Service service) {
 		this.service = service;
 	}
-
-	
-	
 	
 }
