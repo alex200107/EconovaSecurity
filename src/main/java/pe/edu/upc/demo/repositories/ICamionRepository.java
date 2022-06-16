@@ -9,3 +9,4 @@ import pe.edu.upc.demo.entities.Camion;
 public interface ICamionRepository extends JpaRepository<Camion, Integer> {
 
 }
+
